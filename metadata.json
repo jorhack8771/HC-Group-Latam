@@ -1,0 +1,6 @@
+{
+  "name": "Robotic Nicaragua",
+  "description": "Asistentes virtuales con Inteligencia Artificial, chatbots y soporte técnico experto para automatizar tu negocio.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

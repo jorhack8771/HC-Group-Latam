@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robotic Nicaragua | Especialistas en Chatbots, IA y Automatización</title>
+  <meta name="description" content="Robotic Nicaragua: Líderes en desarrollo de Chatbots para WhatsApp, automatización con IA y soluciones robóticas a medida en Managua. ¡Digitaliza tu empresa hoy!">
+  <!-- Open Graph / WhatsApp Preview Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.roboticnic.com/">
+  <meta property="og:title" content="Robotic Nicaragua | Especialistas en Chatbots, IA y Automatización">
+  <meta property="og:description" content="Líderes en desarrollo de Chatbots para WhatsApp, automatización con IA y soluciones robóticas a medida. ¡Digitaliza tu empresa hoy!">
+  <meta property="og:image" content="https://www.roboticnic.com/robotic.jpeg">
+  <meta property="og:image:secure_url" content="https://www.roboticnic.com/robotic.jpeg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Robotic Nicaragua">
+
+  <!-- Twitter Meta Tags (Fallback para algunas redes) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.roboticnic.com/">
+  <meta name="twitter:title" content="Robotic Nicaragua | Especialistas en Chatbots, IA y Automatización">
+  <meta name="twitter:description" content="Líderes en desarrollo de Chatbots para WhatsApp, automatización con IA y soluciones robóticas a medida. ¡Digitaliza tu empresa hoy!">
+  <meta name="twitter:image" content="https://www.roboticnic.com/robotic.jpeg">
+
+  <link rel="icon" type="image/png" href="./favicon.PNG">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  
+  <!-- CSS unificado de la app -->
+  <link rel="stylesheet" href="./styles.css">
+
+  <!-- React Vanilla CDNs -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+
+  <!-- SweetAlert2 for beautiful modals -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    window.showCustomLoading = function() {
+      Swal.fire({
+        title: 'Procesando...',
+        text: 'Por favor, espera un momento.',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+    };
+
+    window.showCustomSuccess = function() {
+      Swal.fire({
+        title: '¡Enviado exitosamente!',
+        text: 'Gracias, nos pondremos en contacto lo más pronto posible.',
+        imageUrl: './robotic.jpeg',
+        imageWidth: 100,
+        imageHeight: 100,
+        imageAlt: 'Logo Robotic',
+        confirmButtonColor: '#0A3E62',
+        timer: 4000,
+        customClass: {
+          image: 'object-contain'
+        }
+      });
+    };
+  </script>
+</head>
+
+<body class="bg-white text-slate-900 grid-bg overflow-x-hidden">
+  <div id="root"></div>
+
+  <!-- Script Transpilado 100% Funcional (Contiene toda la logica Vanilla JS y UI intacta) -->
+  <script src="./app.js"></script>
+</body>
+</html>
