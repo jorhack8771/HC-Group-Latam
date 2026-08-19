@@ -652,6 +652,36 @@ var MyApp = (() => {
   // src/components/Footer.tsx
   var import_react4 = __toESM(require_react_shim(), 1);
   function Footer({ onOpenPrivacy, onPageChange }) {
+    const [email, setEmail] = (0, import_react4.useState)("");
+    const [submitting, setSubmitting] = (0, import_react4.useState)(false);
+    
+    const handleNewsletterSubmit = async (e) => {
+      e.preventDefault();
+      if (!email) return;
+      setSubmitting(true);
+      if (window.showCustomLoading) window.showCustomLoading();
+      
+      try {
+        await fetch("https://script.google.com/macros/s/AKfycbzq5O410-lTQRzqE6UWCEQnM9iYgBuJVl34fRxlMKDYoHgRn_IsEJngJfRDe7RRbx29/exec", {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            tipo_formulario: "boletin",
+            email: email,
+            nombre: "Suscripción Boletín",
+            mensaje: "Solicitud de catálogo comercial"
+          })
+        });
+      } catch(err) {
+        console.warn(err);
+      }
+      
+      setSubmitting(false);
+      setEmail("");
+      if (window.showCustomSuccess) window.showCustomSuccess();
+    };
+
     return /* @__PURE__ */ import_react4.default.createElement("footer", { id: "app-footer", className: "bg-[#1572B6] text-white font-sans mt-20 relative z-10 border-t border-blue-500/30" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "mb-10 flex items-center gap-3 select-none" }, /* @__PURE__ */ import_react4.default.createElement(
       "img",
       {
@@ -695,21 +725,25 @@ var MyApp = (() => {
         className: "hover:text-white hover:underline transition duration-200"
       },
       "T\xE9rminos y Condiciones"
-    )))), /* @__PURE__ */ import_react4.default.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ import_react4.default.createElement("h4", { className: "text-sm font-bold tracking-wider uppercase border-b border-white/10 pb-2" }, "Boletín Informativo"), /* @__PURE__ */ import_react4.default.createElement("form", { onSubmit: (e) => e.preventDefault(), className: "flex flex-col gap-3" }, /* @__PURE__ */ import_react4.default.createElement(
+    )))), /* @__PURE__ */ import_react4.default.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ import_react4.default.createElement("h4", { className: "text-sm font-bold tracking-wider uppercase border-b border-white/10 pb-2" }, "Boletín Informativo"), /* @__PURE__ */ import_react4.default.createElement("form", { onSubmit: handleNewsletterSubmit, className: "flex flex-col gap-3" }, /* @__PURE__ */ import_react4.default.createElement(
       "input",
       {
         type: "email",
+        value: email,
+        onChange: (e) => setEmail(e.target.value),
         placeholder: "Tu correo electr\xF3nico",
-        className: "w-full bg-blue-600/30 border border-white/30 rounded-lg px-4 py-2.5 text-sm text-white placeholder-blue-200 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition"
+        className: "w-full bg-blue-600/30 border border-white/30 rounded-lg px-4 py-2.5 text-sm text-white placeholder-blue-200 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition",
+        required: true
       }
     ), /* @__PURE__ */ import_react4.default.createElement("p", { className: "text-xs text-blue-200 leading-relaxed" }, "Al enviar este formulario, confirma que acepta que usemos su correo \xFAnicamente para enviarle nuestro cat\xE1logo comercial."), /* @__PURE__ */ import_react4.default.createElement(
       "button",
       {
         type: "submit",
-        className: "text-sm font-bold text-left mt-1 hover:underline flex items-center gap-2 w-max text-white hover:text-blue-200 transition duration-200 cursor-pointer"
+        disabled: submitting,
+        className: "text-sm font-bold text-left mt-1 hover:underline flex items-center gap-2 w-max text-white hover:text-blue-200 transition duration-200 cursor-pointer disabled:opacity-50"
       },
-      "SOLICITAR",
-      /* @__PURE__ */ import_react4.default.createElement(Send, { className: "w-4 h-4" })
+      submitting ? "PROCESANDO..." : "SOLICITAR",
+      !submitting && /* @__PURE__ */ import_react4.default.createElement(Send, { className: "w-4 h-4" })
     )))), /* @__PURE__ */ import_react4.default.createElement("div", { className: "pt-6 text-center text-xs sm:text-sm text-blue-100/90 font-medium tracking-wide" }, /* @__PURE__ */ import_react4.default.createElement("p", null, "\xA9 2026 ROBOTIC Nicaragua. Tu aliado estrat\xE9gico en tecnolog\xEDa y automatizaci\xF3n."))));
   }
 
@@ -1228,9 +1262,9 @@ var MyApp = (() => {
     const [mensaje, setMensaje] = (0, import_react9.useState)("");
     const [submitting, setSubmitting] = (0, import_react9.useState)(false);
     const [success, setSuccess] = (0, import_react9.useState)(false);
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_tFA4zc9-DjaomDEEKNiBUXTm8_cFmL0K4RMwq4lMjXmq6bhL5y9kUwsmkPpF9ci3/exec";
-    const TG_TOKEN = "8645980147:AAF3gnwpNAC8t8AuL7sXbSam2jm_nnJaAjg";
-    const TG_CHAT_ID = "8763247895";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzq5O410-lTQRzqE6UWCEQnM9iYgBuJVl34fRxlMKDYoHgRn_IsEJngJfRDe7RRbx29/exec";
+    /* TG_TOKEN removed for security - Managed via Google Apps Script */
+    /* TG_CHAT_ID removed for security */
     (0, import_react9.useEffect)(() => {
       let timer;
       const currentPhrase = phrases[phraseIdx];
@@ -1584,9 +1618,9 @@ var MyApp = (() => {
     const [isCaptchaChecked, setIsCaptchaChecked] = (0, import_react11.useState)(false);
     const [loading, setLoading] = (0, import_react11.useState)(false);
     const URL_MEET = "https://meet.google.com/egd-dabj-qpj";
-    const TELEGRAM_BOT_TOKEN = "8645980147:AAF3gnwpNAC8t8AuL7sXbSam2jm_nnJaAjg";
-    const TELEGRAM_CHAT_ID = "8763247895";
-    const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbx_tFA4zc9-DjaomDEEKNiBUXTm8_cFmL0K4RMwq4lMjXmq6bhL5y9kUwsmkPpF9ci3/exec";
+    /* TG_TOKEN removed for security */
+    /* TG_CHAT_ID removed for security */
+    const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbzq5O410-lTQRzqE6UWCEQnM9iYgBuJVl34fRxlMKDYoHgRn_IsEJngJfRDe7RRbx29/exec";
     const handleSubmitTicket = async (e) => {
       e.preventDefault();
       if (!nombre || !email || !asunto) return;
@@ -1614,19 +1648,7 @@ var MyApp = (() => {
       } catch (err) {
         console.warn("Google Sheets save skipped/failed due to network:", err);
       }
-      try {
-        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            chat_id: TELEGRAM_CHAT_ID,
-            text: textTelegram,
-            parse_mode: "Markdown"
-          })
-        });
-      } catch (err) {
-        console.warn("Telegram alert skipped/failed due to network:", err);
-      }
+      /* Telegram notification delegated to Google Apps Script */
       setLoading(false);
       if(window.showCustomSuccess) window.showCustomSuccess();
       setStep("captcha");
