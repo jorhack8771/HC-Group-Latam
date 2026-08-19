@@ -667,6 +667,7 @@ var MyApp = (() => {
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            recaptcha_token: await window.getRecaptchaToken(),
             tipo_formulario: "boletin",
             email: email,
             nombre: "Suscripción Boletín",
@@ -1321,6 +1322,7 @@ var MyApp = (() => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            recaptcha_token: await window.getRecaptchaToken(),
             chat_id: TG_CHAT_ID,
             text: textoTelegram,
             parse_mode: "Markdown"
@@ -1455,6 +1457,7 @@ var MyApp = (() => {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
+            recaptcha_token: await window.getRecaptchaToken(),
             message: text,
             history: messages
           })
@@ -1638,6 +1641,7 @@ var MyApp = (() => {
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            recaptcha_token: await window.getRecaptchaToken(),
             tipo_formulario: "videoconferencia",
             nombre,
             email,

@@ -36,6 +36,21 @@
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 
+  <!-- Google reCAPTCHA v3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LdRSY0tAAAAAOCZl8HlmlTC9fYfi2CQtpTgd6Da"></script>
+  <script>
+    window.getRecaptchaToken = async function() {
+      const siteKey = '6LdRSY0tAAAAAOCZl8HlmlTC9fYfi2CQtpTgd6Da'; // REEMPLAZAR EN PRODUCCIÓN
+      if (siteKey === '6LdRSY0tAAAAAOCZl8HlmlTC9fYfi2CQtpTgd6Da') return 'dummy_token'; // Modo de prueba
+      return new Promise((resolve) => {
+        grecaptcha.ready(function() {
+          grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {
+            resolve(token);
+          });
+        });
+      });
+    };
+  </script>
   <!-- SweetAlert2 for beautiful modals -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
