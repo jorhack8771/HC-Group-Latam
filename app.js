@@ -1260,6 +1260,8 @@ var MyApp = (() => {
     const [email, setEmail] = (0, import_react9.useState)("");
     const [prefijo, setPrefijo] = (0, import_react9.useState)("+505");
     const [telefono, setTelefono] = (0, import_react9.useState)("");
+    const [pais, setPais] = (0, import_react9.useState)("");
+    const [tipoNegocio, setTipoNegocio] = (0, import_react9.useState)("");
     const [mensaje, setMensaje] = (0, import_react9.useState)("");
     const [submitting, setSubmitting] = (0, import_react9.useState)(false);
     const [success, setSuccess] = (0, import_react9.useState)(false);
@@ -1293,13 +1295,16 @@ var MyApp = (() => {
       e.preventDefault();
       if (!nombre || !email || !telefono || !mensaje) return;
       setSubmitting(true); if(window.showCustomLoading) window.showCustomLoading();
+      
+      const mensajeCombinado = `[País: ${pais || 'No especificado'} | Negocio: ${tipoNegocio || 'No especificado'}]\n\n${mensaje}`;
       const datos = {
         tipo_formulario: "contacto_web",
         nombre,
         email,
         telefono: `${prefijo} ${telefono}`,
-        mensaje,
-        servicio: "Consulta Web"
+        mensaje: mensajeCombinado,
+        servicio: "Consulta Web",
+        recaptcha_token: await window.getRecaptchaToken()
       };
       try {
         await fetch(SCRIPT_URL, {
@@ -1340,6 +1345,8 @@ var MyApp = (() => {
       setEmail("");
       setPrefijo("+505");
       setTelefono("");
+      setPais("");
+      setTipoNegocio("");
       setMensaje("");
       setSuccess(false);
     };
@@ -1369,6 +1376,39 @@ var MyApp = (() => {
         className: "w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition",
         required: true
       }
+    ))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-6" }, /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide" }, "Pa\xEDs"), /* @__PURE__ */ import_react9.default.createElement(
+      "select",
+      {
+        value: pais,
+        onChange: (e) => setPais(e.target.value),
+        className: "w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition text-slate-800",
+        required: true
+      },
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "" }, "Selecciona tu pa\xEDs"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Nicaragua" }, "Nicaragua"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "M\xE9xico" }, "M\xE9xico"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Colombia" }, "Colombia"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Costa Rica" }, "Costa Rica"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Panam\xE1" }, "Panam\xE1"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Honduras" }, "Honduras"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "El Salvador" }, "El Salvador"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Guatemala" }, "Guatemala"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Otro" }, "Otro")
+    )), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide" }, "Tipo de Negocio"), /* @__PURE__ */ import_react9.default.createElement(
+      "select",
+      {
+        value: tipoNegocio,
+        onChange: (e) => setTipoNegocio(e.target.value),
+        className: "w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition text-slate-800",
+        required: true
+      },
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "" }, "Selecciona tipo"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Emprendimiento / Startup" }, "Emprendimiento / Startup"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "PYME / Comercio" }, "PYME / Comercio"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Empresa Corporativa" }, "Empresa Corporativa"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Instituci\xF3n / ONG" }, "Instituci\xF3n / ONG"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Independiente / Freelance" }, "Independiente / Freelance"),
+      /* @__PURE__ */ import_react9.default.createElement("option", { value: "Otro" }, "Otro")
     ))), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide" }, "N\xFAmero de Tel\xE9fono"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex bg-slate-50 border border-slate-200 rounded-xl focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500 transition-all duration-200 overflow-hidden" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "relative flex items-center bg-slate-100/50 border-r border-slate-200 shrink-0" }, /* @__PURE__ */ import_react9.default.createElement(
       "select",
       {
