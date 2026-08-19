@@ -41,6 +41,17 @@
       max-width: 100%;
       height: auto;
     }
+
+    /* Ocultar elementos de Google Translate para mantener el diseño limpio */
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
+    body {
+      top: 0px !important;
+    }
+    #goog-gt-tt {
+      display: none !important;
+    }
   </style>
   <link rel="stylesheet" href="./styles.css">
 
@@ -92,6 +103,15 @@
       });
     };
   </script>
+  <!-- Google Translate Script -->
+  <div id="google_translate_element" style="display: none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'es,en', autoDisplay: false}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   <!-- SweetAlert2 for beautiful modals -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>

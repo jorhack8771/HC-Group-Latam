@@ -616,15 +616,15 @@ var MyApp = (() => {
           onClick: () => handleNavClick(item.id),
           className: `transition duration-150 cursor-pointer uppercase border-r border-slate-200 last:border-r-0 pr-8 last:pr-0 ${isActive ? "text-[#0A3E62] font-black" : "hover:text-[#0A3E62]"}`
         },
-        item.label
+        currentLang === "es" ? item.label : item.labelEn
       );
     })), /* @__PURE__ */ import_react3.default.createElement("div", { className: "flex-grow max-w-[80px]" }), /* @__PURE__ */ import_react3.default.createElement(
       "button",
       {
         onClick: () => handleNavClick("bot"),
-        className: `border-2 border-[#0A3E62] text-[#0A3E62] px-6 py-2 rounded font-bold text-xs tracking-wider uppercase hover:bg-[#0A3E62] hover:text-white transition duration-200 cursor-pointer ${currentPage === "bot" ? "bg-[#0A3E62] text-white" : ""}`
+        className: `border-[2px] border-[#0A3E62] text-[#0A3E62] px-6 py-2 rounded-sm font-bold text-xs tracking-wider uppercase hover:bg-[#0A3E62] hover:text-white transition duration-200 cursor-pointer ${currentPage === "bot" ? "bg-[#0A3E62] text-white" : ""}`
       },
-      portalLabel
+      currentLang === "es" ? "PORTAL DE CLIENTES" : "CUSTOMER PORTAL"
     ))), isOpen && /* @__PURE__ */ import_react3.default.createElement("div", { id: "mobile-menu", className: "md:hidden border-t border-slate-100 bg-white shadow-lg animate-in fade-in slide-in-from-top-2 duration-200" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "px-4 py-4 flex flex-col gap-3" }, navItems.map((item) => {
       const isActive = currentPage === item.id;
       return /* @__PURE__ */ import_react3.default.createElement(
@@ -757,6 +757,7 @@ var MyApp = (() => {
       { word: "Telegram", color: "#0088cc" }
     ];
     const [wordIndex, setWordIndex] = (0, import_react5.useState)(0);
+    const [activeVideo, setActiveVideo] = (0, import_react5.useState)(null);
     const [chatsCount, setChatsCount] = (0, import_react5.useState)(() => {
       let saved = localStorage.getItem("global_visits");
       if (!saved || parseInt(saved) < 10257) {
@@ -913,7 +914,8 @@ var MyApp = (() => {
         name: "Soporte Pro",
         tag: "Soporte",
         desc: "Mantenimiento preventivo y correctivo para tu hardware y sistemas.",
-        features: ["Optimizaci\xF3n de SO", "Asistencia remota 24/7"],
+        video: "https://player.vimeo.com/video/1219436943?background=1&autoplay=1&loop=1&muted=1",
+        features: [],
         btnText: "Solicitar Soporte",
         btnUrl: "https://wa.me/50589106157?text=Me%20interesa%20el%20soporte%20pro"
       },
@@ -993,7 +995,7 @@ var MyApp = (() => {
         className: `bg-white rounded-3xl p-6 shadow-sm border flex flex-col justify-between hover:shadow-lg hover:scale-105 transition-all duration-300 relative ${service.primary ? "border-blue-600 ring-2 ring-blue-600/15" : "border-slate-100"}`
       },
       service.popular && /* @__PURE__ */ import_react5.default.createElement("span", { className: "absolute -top-3.5 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-extrabold tracking-wider uppercase px-3 py-1 rounded-full shadow-md shadow-blue-500/10" }, "Top Ventas"),
-      /* @__PURE__ */ import_react5.default.createElement("div", null, /* @__PURE__ */ import_react5.default.createElement("h3", { className: "text-lg font-extrabold text-slate-800" }, service.name), /* @__PURE__ */ import_react5.default.createElement("div", { className: "mt-3" }, /* @__PURE__ */ import_react5.default.createElement("span", { className: "bg-slate-50 text-slate-600 border border-slate-200/50 text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 rounded-full" }, service.tag)), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-slate-500 text-xs leading-relaxed mt-4 mb-6 min-h-[36px]" }, service.desc), /* @__PURE__ */ import_react5.default.createElement("ul", { className: "space-y-3 border-t border-slate-50 pt-6" }, service.features.map((feat, fIdx) => /* @__PURE__ */ import_react5.default.createElement("li", { key: fIdx, className: "flex items-center gap-2.5 text-xs text-slate-600" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "w-4 h-4 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shrink-0 shadow-sm border border-blue-400/20" }, /* @__PURE__ */ import_react5.default.createElement(Check, { className: "w-2.5 h-2.5 text-white stroke-[4]" })), /* @__PURE__ */ import_react5.default.createElement("span", null, feat))))),
+      /* @__PURE__ */ import_react5.default.createElement("div", null, /* @__PURE__ */ import_react5.default.createElement("h3", { className: "text-lg font-extrabold text-slate-800" }, service.name), /* @__PURE__ */ import_react5.default.createElement("div", { className: "mt-3" }, /* @__PURE__ */ import_react5.default.createElement("span", { className: "bg-slate-50 text-slate-600 border border-slate-200/50 text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 rounded-full" }, service.tag)), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-slate-500 text-xs leading-relaxed mt-4 mb-6 min-h-[36px]" }, service.desc), service.video && /* @__PURE__ */ import_react5.default.createElement("div", { className: "w-full rounded-xl overflow-hidden mb-6 bg-slate-100/50 border border-slate-100 relative group cursor-pointer shadow-sm hover:shadow-md transition-shadow", style: { aspectRatio: '16/9' }, onClick: () => setActiveVideo("https://player.vimeo.com/video/1219436943?autoplay=1&muted=0&color=0A3E62") }, /* @__PURE__ */ import_react5.default.createElement("iframe", { src: service.video, className: "w-full h-full pointer-events-none scale-[1.02]", frameBorder: "0", allow: "autoplay; fullscreen; picture-in-picture", allowFullScreen: true }), /* @__PURE__ */ import_react5.default.createElement("div", { className: "absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors flex items-center justify-center z-10" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "w-12 h-12 rounded-full bg-white/90 shadow-lg flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform" }, /* @__PURE__ */ import_react5.default.createElement("svg", { className: "w-5 h-5 text-[#0A3E62] ml-1", fill: "currentColor", viewBox: "0 0 24 24" }, /* @__PURE__ */ import_react5.default.createElement("path", { d: "M8 5v14l11-7z" }))))), service.features && service.features.length > 0 && /* @__PURE__ */ import_react5.default.createElement("ul", { className: "space-y-3 border-t border-slate-50 pt-6" }, service.features.map((feat, fIdx) => /* @__PURE__ */ import_react5.default.createElement("li", { key: fIdx, className: "flex items-center gap-2.5 text-xs text-slate-600" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "w-4 h-4 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shrink-0 shadow-sm border border-blue-400/20" }, /* @__PURE__ */ import_react5.default.createElement(Check, { className: "w-2.5 h-2.5 text-white stroke-[4]" })), /* @__PURE__ */ import_react5.default.createElement("span", null, feat))))),
       /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex justify-center w-full mt-6" }, /* @__PURE__ */ import_react5.default.createElement(
         "a",
         {
@@ -1035,17 +1037,18 @@ var MyApp = (() => {
         },
         /* @__PURE__ */ import_react5.default.createElement("div", null, /* @__PURE__ */ import_react5.default.createElement("span", { className: "text-lg font-black text-blue-600/30 tracking-widest block" }, feat.id), /* @__PURE__ */ import_react5.default.createElement("h3", { className: "font-bold text-slate-800 text-xs mb-1 mt-1" }, feat.title), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-slate-500 text-[10.5px] leading-relaxed" }, feat.desc))
       );
-    }))));
+    })), activeVideo && /* @__PURE__ */ import_react5.default.createElement("div", { className: "fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 animate-in fade-in duration-300", onClick: () => setActiveVideo(null) }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl", style: { aspectRatio: '16/9' }, onClick: (e) => e.stopPropagation() }, /* @__PURE__ */ import_react5.default.createElement("button", { onClick: () => setActiveVideo(null), className: "absolute top-4 right-4 z-50 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors" }, /* @__PURE__ */ import_react5.default.createElement("svg", { className: "w-5 h-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, /* @__PURE__ */ import_react5.default.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" }))), /* @__PURE__ */ import_react5.default.createElement("iframe", { src: activeVideo, className: "w-full h-full", frameBorder: "0", allow: "autoplay; fullscreen; picture-in-picture", allowFullScreen: true })))));
   }
 
   // src/components/FuncionalidadesView.tsx
   var import_react6 = __toESM(require_react_shim(), 1);
   function FuncionalidadesView() {
     const [currentVideoIndex, setCurrentVideoIndex] = (0, import_react6.useState)(0);
-    const videoIds = ["1194234660", "1191713624"];
+    const videoIds = ["1194234660", "1191713624", "1219439415"];
     const videoTitles = [
       "Ciberseguridad & Protecci\xF3n",
-      "Defensa Activa & Monitoreo"
+      "Defensa Activa & Monitoreo",
+      "Asistente Virtual con IA"
     ];
     (0, import_react6.useEffect)(() => {
       const handleMessage = (event) => {
@@ -1284,26 +1287,6 @@ var MyApp = (() => {
         });
       } catch (err) {
         console.warn("Failed Google Sheets post, proceeding:", err);
-      }
-      try {
-        const textoTelegram = `\u{1F680} *NUEVO CONTACTO WEB*
-
-\u{1F464} *Nombre:* ${nombre}
-\u{1F4E7} *Email:* ${email}
-\u{1F4DE} *Tel\xE9fono:* ${prefijo} ${telefono}
-\u{1F4AC} *Mensaje:* ${mensaje}`;
-        await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            recaptcha_token: await window.getRecaptchaToken(),
-            chat_id: TG_CHAT_ID,
-            text: textoTelegram,
-            parse_mode: "Markdown"
-          })
-        });
-      } catch (err) {
-        console.warn("Failed Telegram notification:", err);
       }
       setSubmitting(false);
       setSuccess(true);

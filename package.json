@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "npx serve -l 3000 .",
-    "start": "npx serve -l 3000 ."
+    "start": "npx serve -l 3000 .",
+    "build": "echo 'No build step required'"
   },
   "dependencies": {
     "serve": "^14.2.6"
