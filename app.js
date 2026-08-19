@@ -1248,14 +1248,6 @@ var MyApp = (() => {
     { code: "+1-809", name: "Rep. Dominicana (1)" }
   ];
   function ContactoView() {
-    const phrases = [
-      "Cu\xE9ntanos en qu\xE9 podemos ayudarte",
-      "Nuestro equipo est\xE1 listo para responder tus preguntas"
-    ];
-    const [headingText, setHeadingText] = (0, import_react9.useState)("");
-    const [phraseIdx, setPhraseIdx] = (0, import_react9.useState)(0);
-    const [letterIdx, setLetterIdx] = (0, import_react9.useState)(0);
-    const [isDeleting, setIsDeleting] = (0, import_react9.useState)(false);
     const [nombre, setNombre] = (0, import_react9.useState)("");
     const [email, setEmail] = (0, import_react9.useState)("");
     const [prefijo, setPrefijo] = (0, import_react9.useState)("+505");
@@ -1268,29 +1260,6 @@ var MyApp = (() => {
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbweqLHm8qdjTcbpXX5MIvs9dWpWfNNcfwopt4sIVaQXbWEDq6BHmRqZ93eiXLFURkjb/exec";
     /* TG_TOKEN removed for security - Managed via Google Apps Script */
     /* TG_CHAT_ID removed for security */
-    (0, import_react9.useEffect)(() => {
-      let timer;
-      const currentPhrase = phrases[phraseIdx];
-      if (!isDeleting && letterIdx < currentPhrase.length) {
-        timer = window.setTimeout(() => {
-          setHeadingText((prev) => prev + currentPhrase[letterIdx]);
-          setLetterIdx((prev) => prev + 1);
-        }, 80);
-      } else if (!isDeleting && letterIdx === currentPhrase.length) {
-        timer = window.setTimeout(() => {
-          setIsDeleting(true);
-        }, 2e3);
-      } else if (isDeleting && headingText.length > 0) {
-        timer = window.setTimeout(() => {
-          setHeadingText((prev) => prev.slice(0, -1));
-        }, 40);
-      } else if (isDeleting && headingText.length === 0) {
-        setIsDeleting(false);
-        setLetterIdx(0);
-        setPhraseIdx((prev) => (prev + 1) % phrases.length);
-      }
-      return () => clearTimeout(timer);
-    }, [letterIdx, isDeleting, phraseIdx, headingText]);
     const handleSubmit = async (e) => {
       e.preventDefault();
       if (!nombre || !email || !telefono || !mensaje) return;
@@ -1356,7 +1325,7 @@ var MyApp = (() => {
       { title: "Soporte Comercial", desc: "Atenci\xF3n comercial dedicada para cotizar proyectos web y sistemas a medida.", icon: "\u{1F4BC}" },
       { title: "Capacitaciones", desc: "Acompa\xF1amiento en el entrenamiento del equipo para la administraci\xF3n de los bots.", icon: "\u{1F393}" }
     ];
-    return /* @__PURE__ */ import_react9.default.createElement("div", { id: "contacto-view", className: "w-full" }, /* @__PURE__ */ import_react9.default.createElement("main", { className: "max-w-4xl mx-auto pt-16 pb-12 text-center px-4" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-[10px] font-bold tracking-widest text-slate-400 uppercase border border-slate-200 px-3 py-1 rounded-full bg-slate-50" }, "Ponte en contacto"), /* @__PURE__ */ import_react9.default.createElement("h1", { className: "text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 mt-6 mb-4 h-[90px] sm:h-[100px] md:h-[120px] block w-full" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "inline-block max-w-full break-words border-r-2 border-slate-400 pr-1 animate-pulse" }, headingText)), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-slate-500 max-w-xl mx-auto leading-relaxed text-xs sm:text-sm" }, "Nuestro equipo t\xE9cnico est\xE1 listo para resolver tus inquietudes operativas, automatizar tu CRM o programar tu videoconferencia personalizada.")), /* @__PURE__ */ import_react9.default.createElement("section", { className: "max-w-3xl mx-auto px-4 mb-20" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white border border-slate-100 rounded-3xl p-6 sm:p-10 shadow-sm" }, !success ? /* @__PURE__ */ import_react9.default.createElement("form", { onSubmit: handleSubmit, className: "space-y-6" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-6" }, /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide" }, "Tu nombre"), /* @__PURE__ */ import_react9.default.createElement(
+    return /* @__PURE__ */ import_react9.default.createElement("div", { id: "contacto-view", className: "w-full" }, /* @__PURE__ */ import_react9.default.createElement("main", { className: "max-w-4xl mx-auto pt-16 pb-12 text-center px-4" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "inline-block text-[11px] font-bold tracking-[0.2em] text-slate-500 uppercase border border-slate-200 px-6 py-2 rounded-full bg-slate-50 mb-2" }, "Ponte en contacto"), /* @__PURE__ */ import_react9.default.createElement("h1", { className: "text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 mt-6 mb-4 min-h-[160px] sm:min-h-[120px] md:min-h-[80px] flex items-center justify-center w-full leading-[1.3]" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "inline" }, "Cu\xE9ntanos en qu\xE9 podemos ayudarte")), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-slate-500 max-w-xl mx-auto leading-relaxed text-xs sm:text-sm" }, "Nuestro equipo t\xE9cnico est\xE1 listo para resolver tus inquietudes operativas, automatizar tu CRM o programar tu videoconferencia personalizada.")), /* @__PURE__ */ import_react9.default.createElement("section", { className: "max-w-3xl mx-auto px-4 mb-20" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white border border-slate-100 rounded-3xl p-6 sm:p-10 shadow-sm" }, !success ? /* @__PURE__ */ import_react9.default.createElement("form", { onSubmit: handleSubmit, className: "space-y-6" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-6" }, /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide" }, "Tu nombre"), /* @__PURE__ */ import_react9.default.createElement(
       "input",
       {
         type: "text",
