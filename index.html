@@ -24,12 +24,24 @@
   <meta name="twitter:description" content="Líderes en desarrollo de Chatbots para WhatsApp, automatización con IA y soluciones robóticas a medida. ¡Digitaliza tu empresa hoy!">
   <meta name="twitter:image" content="https://www.roboticnic.com/robotic.jpeg">
 
-  <link rel="icon" type="image/png" href="./favicon.PNG">
+  <link rel="icon" type="image/jpeg" href="./robotic.jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
   
   <!-- CSS unificado de la app -->
+  <style>
+    /* Aumento global de tamaño de letra (escala rem de Tailwind) */
+    html {
+      font-size: 16.6px !important; /* +0.6px de aumento sutil en la base global */
+    }
+    
+    /* Prevenir que SVG o iconos se rompan */
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
   <link rel="stylesheet" href="./styles.css">
 
   <!-- React Vanilla CDNs -->
@@ -41,7 +53,7 @@
   <script>
     window.getRecaptchaToken = async function() {
       const siteKey = '6LdRSY0tAAAAAOCZl8HlmlTC9fYfi2CQtpTgd6Da'; // REEMPLAZAR EN PRODUCCIÓN
-      if (siteKey === '6LdRSY0tAAAAAOCZl8HlmlTC9fYfi2CQtpTgd6Da') return 'dummy_token'; // Modo de prueba
+      // Ejecutando token real
       return new Promise((resolve) => {
         grecaptcha.ready(function() {
           grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {

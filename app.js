@@ -662,7 +662,7 @@ var MyApp = (() => {
       if (window.showCustomLoading) window.showCustomLoading();
       
       try {
-        await fetch("https://script.google.com/macros/s/AKfycbzq5O410-lTQRzqE6UWCEQnM9iYgBuJVl34fRxlMKDYoHgRn_IsEJngJfRDe7RRbx29/exec", {
+        await fetch("https://script.google.com/macros/s/AKfycbweqLHm8qdjTcbpXX5MIvs9dWpWfNNcfwopt4sIVaQXbWEDq6BHmRqZ93eiXLFURkjb/exec", {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
@@ -1263,7 +1263,7 @@ var MyApp = (() => {
     const [mensaje, setMensaje] = (0, import_react9.useState)("");
     const [submitting, setSubmitting] = (0, import_react9.useState)(false);
     const [success, setSuccess] = (0, import_react9.useState)(false);
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzq5O410-lTQRzqE6UWCEQnM9iYgBuJVl34fRxlMKDYoHgRn_IsEJngJfRDe7RRbx29/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbweqLHm8qdjTcbpXX5MIvs9dWpWfNNcfwopt4sIVaQXbWEDq6BHmRqZ93eiXLFURkjb/exec";
     /* TG_TOKEN removed for security - Managed via Google Apps Script */
     /* TG_CHAT_ID removed for security */
     (0, import_react9.useEffect)(() => {
@@ -1623,7 +1623,7 @@ var MyApp = (() => {
     const URL_MEET = "https://meet.google.com/egd-dabj-qpj";
     /* TG_TOKEN removed for security */
     /* TG_CHAT_ID removed for security */
-    const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbzq5O410-lTQRzqE6UWCEQnM9iYgBuJVl34fRxlMKDYoHgRn_IsEJngJfRDe7RRbx29/exec";
+    const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbweqLHm8qdjTcbpXX5MIvs9dWpWfNNcfwopt4sIVaQXbWEDq6BHmRqZ93eiXLFURkjb/exec";
     const handleSubmitTicket = async (e) => {
       e.preventDefault();
       if (!nombre || !email || !asunto) return;
