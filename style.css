@@ -1403,3 +1403,63 @@ html::-webkit-scrollbar { display: none; } /* Chrome/Safari */
   .nf-phone-row{ flex-direction:column; }
   .nf-phone-row select{ flex:1; }
 }
+/* ================================================================
+   NUEVO DISEÑO "NUESTRA HISTORIA" (sección #nosotros) — paleta teal
+   y tipografías propias (Space Grotesk / IBM Plex Mono / Inter),
+   completamente namespaced con prefijo "nh-" para no tocar ninguna
+   otra regla del sitio.
+   ================================================================ */
+.nh-section{
+  --nh-ink:#0B2430; --nh-teal:#0F7B72; --nh-teal-deep:#0A5850;
+  --nh-teal-tint:#E4F3F1; --nh-card:#FFFFFF; --nh-muted:#5C6E70; --nh-line:#DCE8E6;
+  background-color: var(--nh-card);
+}
+
+.nh-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:72px; align-items:start; }
+
+.nh-eyebrow{ display:flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--nh-teal-deep); margin:0 0 22px; }
+.nh-eyebrow svg{ flex-shrink:0; }
+
+.nh-title{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:clamp(2.2rem, 3.2vw + 1rem, 3.4rem); line-height:1.06; letter-spacing:-0.01em; margin:0 0 26px; color:var(--nh-ink); }
+
+.nh-lead{ font-family:'Inter', sans-serif; font-size:1.05rem; line-height:1.65; color:var(--nh-muted); max-width:46ch; margin:0 0 40px; }
+
+.nh-stats{ display:flex; gap:0; margin:0; padding-top:28px; border-top:1px solid var(--nh-line); }
+.nh-stat{ padding:0 28px; border-left:1px solid var(--nh-line); }
+.nh-stat:first-child{ padding-left:0; border-left:none; }
+.nh-stat dt{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:2rem; color:var(--nh-ink); margin:0 0 6px; }
+.nh-stat dd{ margin:0; font-family:'Inter', sans-serif; font-size:.76rem; letter-spacing:.03em; color:var(--nh-muted); line-height:1.4; max-width:14ch; }
+
+.nh-timeline{ position:relative; }
+.nh-milestone{ position:relative; display:flex; gap:24px; margin-bottom:28px; }
+.nh-milestone:last-child{ margin-bottom:0; }
+
+.nh-node{ position:relative; flex:0 0 46px; width:46px; height:46px; border-radius:50%; background:var(--nh-card); border:2px solid var(--nh-teal); display:flex; align-items:center; justify-content:center; color:var(--nh-teal-deep); z-index:2; align-self:flex-start; margin-top:2px; }
+.nh-node::after{ content:''; position:absolute; inset:-6px; border-radius:50%; border:1px solid var(--nh-teal); opacity:0; }
+@media (prefers-reduced-motion: no-preference){
+  .nh-node::after{ animation:nh-pulse-ring 2.6s ease-out infinite; }
+  .nh-milestone:nth-child(2) .nh-node::after{ animation-delay:1.3s; }
+}
+@keyframes nh-pulse-ring{ 0%{ transform:scale(.85); opacity:.55; } 100%{ transform:scale(1.35); opacity:0; } }
+
+.nh-card{ flex:1; background:var(--nh-card); border:1px solid var(--nh-line); border-radius:10px; padding:28px 30px; box-shadow:0 1px 2px rgba(10,40,45,.04); }
+.nh-card--active{ border-color:var(--nh-teal); background:linear-gradient(180deg, var(--nh-teal-tint) 0%, var(--nh-card) 60%); }
+
+.nh-tag{ display:inline-block; font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase; padding:5px 12px; border-radius:999px; background:var(--nh-teal-tint); color:var(--nh-teal-deep); margin-bottom:14px; }
+.nh-tag--solid{ background:var(--nh-teal); color:#fff; }
+
+.nh-card h3{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.32rem; margin:0 0 10px; color:var(--nh-ink); }
+.nh-card p{ margin:0; font-family:'Inter', sans-serif; font-size:.98rem; line-height:1.65; color:var(--nh-muted); }
+.nh-card p strong{ color:var(--nh-ink); font-weight:600; }
+
+@media (max-width:900px){
+  .nh-grid{ grid-template-columns:1fr; gap:56px; }
+  .nh-stats{ flex-wrap:wrap; row-gap:20px; }
+  .nh-stat{ padding:0 20px; }
+}
+@media (max-width:520px){
+  .nh-node{ flex-basis:36px; width:36px; height:36px; }
+  .nh-milestone{ gap:16px; }
+  .nh-card{ padding:22px 20px; }
+  .nh-stat{ border-left:none; padding:0; flex:1 1 45%; }
+}

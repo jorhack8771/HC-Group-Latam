@@ -665,7 +665,7 @@ function hcT(key){
   }
 
   /* ---------- REVELADO AL HACER SCROLL ---------- */
-  var revealEls = document.querySelectorAll('.unit, .vm-card, .strip-item, .diff-list li, .next-badge, .section-head, .col-body, .commit-inner, .contact-copy, .lead-form, .nf-form-card, .nf-map-card');
+  var revealEls = document.querySelectorAll('.unit, .vm-card, .strip-item, .diff-list li, .next-badge, .section-head, .col-body, .commit-inner, .contact-copy, .lead-form, .nf-form-card, .nf-map-card, .nh-intro, .nh-milestone');
   if ('IntersectionObserver' in window && !reduceMotion){
     revealEls.forEach(function(el){ el.classList.add('reveal'); });
     var io = new IntersectionObserver(function(entries){
