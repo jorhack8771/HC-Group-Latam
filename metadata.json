@@ -1,6 +1,8 @@
 {
-  "name": "Robotic Nicaragua",
-  "description": "Asistentes virtuales con Inteligencia Artificial, chatbots y soporte técnico experto para automatizar tu negocio.",
-  "requestFramePermissions": ["camera", "microphone", "geolocation"],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "name": "HC Group",
+  "description": "Portal institucional y soluciones integrales para el sector salud",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
